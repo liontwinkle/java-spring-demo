@@ -1,0 +1,284 @@
+{
+	"id": "8319b8ac-c494-4722-935d-58f640a84169",
+	"name": "SampleAppRequest",
+	"description": "",
+	"auth": null,
+	"events": null,
+	"variables": [],
+	"order": [
+		"210d7bcd-3062-48fa-a618-a88c1aec6ff0",
+		"56905ed9-436a-4cc7-bbd9-5497ee2739a8",
+		"49c5b074-5621-42df-884c-32bedb8f4eb0",
+		"3fd92338-791e-4501-a19c-7e83c3aaae72",
+		"f3b8cd61-d8ce-4775-8595-ad4a431781de",
+		"a0353a11-fd69-4d55-ab41-72bc3673923c",
+		"b2b127e3-1dd6-4a62-9084-9eb33d7a4bb2",
+		"c93c91a1-883d-4b75-9ee1-e9f05da4c8b0"
+	],
+	"folders_order": [],
+	"folders": [],
+	"requests": [
+		{
+			"id": "210d7bcd-3062-48fa-a618-a88c1aec6ff0",
+			"name": "Log in",
+			"url": "{{url}}/auth/login",
+			"description": "",
+			"data": [],
+			"dataMode": "raw",
+			"headerData": [
+				{
+					"key": "Content-Type",
+					"value": "application/json"
+				}
+			],
+			"method": "POST",
+			"pathVariableData": [],
+			"queryParams": [],
+			"auth": null,
+			"events": [
+				{
+					"listen": "test",
+					"script": {
+						"id": "fb2f7adf-aae8-428b-a47f-ff5735b7547a",
+						"type": "text/javascript",
+						"exec": [
+							"pm.environment.set(\"token\", pm.response.headers.get(\"x-auth\"));"
+						]
+					}
+				}
+			],
+			"folder": null,
+			"rawModeData": "{\n\t\"email\":\"admin@admin@com\",\n\t\"password\":\"Admin123@\"\n}",
+			"headers": "Content-Type: application/json\n",
+			"pathVariables": {}
+		},
+		{
+			"id": "3fd92338-791e-4501-a19c-7e83c3aaae72",
+			"name": "Get incident (paged)",
+			"url": "{{url}}/incident?page=0&size=10&sort=title,asc",
+			"description": "",
+			"data": null,
+			"dataMode": "params",
+			"headerData": [
+				{
+					"key": "x-auth",
+					"value": "{{token}}",
+					"description": "Auth token",
+					"enabled": true
+				}
+			],
+			"method": "GET",
+			"pathVariableData": [],
+			"queryParams": [
+				{
+					"key": "titleLike",
+					"value": "Test",
+					"equals": true,
+					"description": "Search by title",
+					"enabled": false
+				},
+				{
+					"key": "sourceUrlLike",
+					"value": "localhost",
+					"equals": true,
+					"description": "Search by url",
+					"enabled": false
+				},
+				{
+					"key": "incidentDateStart",
+					"value": "2015-01-01T00:00:00.000Z",
+					"equals": true,
+					"description": "From (Inclusive)",
+					"enabled": false
+				},
+				{
+					"key": "IncidentDateEnd",
+					"value": "2017-01-01T00:00:00.000Z",
+					"equals": true,
+					"description": "To (Exclusive)",
+					"enabled": false
+				},
+				{
+					"key": "page",
+					"value": "0",
+					"equals": true,
+					"description": "Page number (start from 0)",
+					"enabled": true
+				},
+				{
+					"key": "size",
+					"value": "10",
+					"equals": true,
+					"description": "Page size",
+					"enabled": true
+				},
+				{
+					"key": "sort",
+					"value": "title,asc",
+					"equals": true,
+					"description": "Sort",
+					"enabled": true
+				}
+			],
+			"auth": null,
+			"events": [],
+			"folder": null,
+			"headers": "x-auth: {{token}}\n",
+			"pathVariables": {}
+		},
+		{
+			"id": "49c5b074-5621-42df-884c-32bedb8f4eb0",
+			"name": "Logut",
+			"url": "{{url}}/auth/logout",
+			"description": "",
+			"data": null,
+			"dataMode": "params",
+			"headerData": [
+				{
+					"key": "x-auth",
+					"value": "{{token}}",
+					"description": "Auth token",
+					"enabled": true
+				}
+			],
+			"method": "GET",
+			"pathVariableData": [],
+			"queryParams": [],
+			"auth": null,
+			"events": [],
+			"folder": null,
+			"headers": "x-auth: {{token}}\n",
+			"pathVariables": {}
+		},
+		{
+			"id": "56905ed9-436a-4cc7-bbd9-5497ee2739a8",
+			"name": "User info (me)",
+			"url": "{{url}}/auth/me",
+			"description": "",
+			"data": null,
+			"dataMode": "params",
+			"headerData": [
+				{
+					"key": "x-auth",
+					"value": "{{token}}",
+					"description": "Auth token",
+					"enabled": true
+				}
+			],
+			"method": "GET",
+			"pathVariableData": [],
+			"queryParams": [],
+			"auth": null,
+			"events": [],
+			"folder": null,
+			"headers": "x-auth: {{token}}\n",
+			"pathVariables": {}
+		},
+		{
+			"id": "a0353a11-fd69-4d55-ab41-72bc3673923c",
+			"name": "Update incident",
+			"url": "{{url}}/incident",
+			"description": "",
+			"data": [],
+			"dataMode": "raw",
+			"headerData": [
+				{
+					"key": "Content-Type",
+					"value": "application/json"
+				},
+				{
+					"key": "x-auth",
+					"value": "{{token}}",
+					"description": "Auth token",
+					"enabled": true
+				}
+			],
+			"method": "PUT",
+			"pathVariableData": [],
+			"queryParams": [],
+			"auth": null,
+			"events": [],
+			"folder": null,
+			"rawModeData": "{\n    \"id\": 6,\n    \"title\": \"This is incident 2\",\n    \"description\": \"Test not\",\n    \"sourceUrl\": \"http://localhost/234\",\n    \"incidentDate\": \"2018-02-01T20:00:00\"\n}",
+			"headers": "Content-Type: application/json\nx-auth: {{token}}\n",
+			"pathVariables": {}
+		},
+		{
+			"id": "b2b127e3-1dd6-4a62-9084-9eb33d7a4bb2",
+			"name": "Get incident by id",
+			"url": "{{url}}/incident/6",
+			"description": "",
+			"data": null,
+			"dataMode": "params",
+			"headerData": [
+				{
+					"key": "x-auth",
+					"value": "{{token}}",
+					"description": "Auth token",
+					"enabled": true
+				}
+			],
+			"method": "GET",
+			"pathVariableData": [],
+			"queryParams": [],
+			"auth": null,
+			"events": [],
+			"folder": null,
+			"headers": "x-auth: {{token}}\n",
+			"pathVariables": {}
+		},
+		{
+			"id": "c93c91a1-883d-4b75-9ee1-e9f05da4c8b0",
+			"name": "Delete incident",
+			"url": "{{url}}/incident/6",
+			"description": "",
+			"data": null,
+			"dataMode": "params",
+			"headerData": [
+				{
+					"key": "x-auth",
+					"value": "{{token}}",
+					"description": "Auth token",
+					"enabled": true
+				}
+			],
+			"method": "DELETE",
+			"pathVariableData": [],
+			"queryParams": [],
+			"auth": null,
+			"events": [],
+			"folder": null,
+			"headers": "x-auth: {{token}}\n",
+			"pathVariables": {}
+		},
+		{
+			"id": "f3b8cd61-d8ce-4775-8595-ad4a431781de",
+			"name": "Create Incident",
+			"url": "{{url}}/incident",
+			"description": "",
+			"data": [],
+			"dataMode": "raw",
+			"headerData": [
+				{
+					"key": "Content-Type",
+					"value": "application/json"
+				},
+				{
+					"key": "x-auth",
+					"value": "{{token}}",
+					"description": "Auth token",
+					"enabled": true
+				}
+			],
+			"method": "POST",
+			"pathVariableData": [],
+			"queryParams": [],
+			"auth": null,
+			"events": [],
+			"folder": null,
+			"rawModeData": "{\n\t\"id\":null,\n\t\"title\":\"This is incident\",\n\t\"description\":\"Test\",\n\t\"incidentDate\":\"2018-01-01T20:00:00\",\n\t\"sourceUrl\":\"http://localhost/234\"\n}",
+			"headers": "Content-Type: application/json\nx-auth: {{token}}\n",
+			"pathVariables": {}
+		}
+	]
+}
