@@ -1,12 +1,1 @@
-Simple spring boot 2 application for demonstration purpose, contains auth and simplified incident crud/filtering examples.
-
-Compile jar: mvn clean package
-Run: go to folder /target and run command java -jar demo-0.0.1-SNAPSHOT.jar
-
-Request examples for postman in SampleAppRequest.postman_collection.json.
-To use this request import collection and configure environment variable url (by default app run on localhost, port - 9091, protocol - http).
-Note: app use in memory database (H2) and all data will be lost after application shutdown
-
-Users/Password:
-admin@admin@com Admin123@
-user@user@com User123@
+Spring boot demo code
